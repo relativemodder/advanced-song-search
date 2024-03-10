@@ -1,0 +1,3 @@
+[submodule "adv-search-bindings"]
+	path = adv-search-bindings
+	url = https://github.com/CollabHostingDashboard/adv-search-bindings
