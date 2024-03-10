@@ -5,5 +5,12 @@
 	"name": "Advanced Song Search",
 	"developer": "relative",
 	"description": "Mod that allows you to search music in your downloaded songs library.",
-	"gd": "*"
+	"gd": {
+		"win": "*",
+		"android": "*"
+	},
+	"links": {
+		"homepage": "https://discord.gg/wfDRrksKA3"
+	},
+	"repository": "https://github.com/relativemodder/advanced-song-search"
 }
