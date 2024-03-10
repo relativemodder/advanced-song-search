@@ -41,11 +41,9 @@ void AdvancedSearchFilterLayer::handle_search(CCObject* sender) {
     removeFromParent();
 
     Shared::shared_song_browser->removeAllChildren();
-
-    Shared::shared_song_browser->init();
-
+    Shared::shared_song_browser->init(); // reloading lol
     Shared::shared_song_browser->setZOrder(9999);
-    Shared::shared_song_browser->showLayer(true); // reloading lol
+    Shared::shared_song_browser->showLayer(true); // i blame robtop
     
 }
 
@@ -66,6 +64,7 @@ bool AdvancedSearchFilterLayer::init() {
     runAction(
         CCFadeTo::create(0.1f, 0x80)
     );
+	auto winSize = CCDirector::sharedDirector()->getWinSize();
 
 
     m_mainLayer->setScale(0.0f);
@@ -76,7 +75,7 @@ bool AdvancedSearchFilterLayer::init() {
     auto titleLabel = CCLabelBMFont::create("Set search filter", "bigFont.fnt");
 	m_mainLayer->addChild(titleLabel);
 
-	titleLabel->setPosition({285.0f, 212.0f});
+	titleLabel->setPosition({winSize.width / 2.0f, winSize.height / 2.f + 50.0f});
 	titleLabel->setScale(0.575f);
 
     auto okspr = ButtonSprite::create("Search", "goldFont.fnt", "GJ_button_05.png");
@@ -97,11 +96,11 @@ bool AdvancedSearchFilterLayer::init() {
 	mainMenu->setPosition({0., 0.});
 	mainMenu->setAnchorPoint({0., 0.});
 
-    okBtn->setPosition({351.0f, 128.0f});
-    cancelBtn->setPosition({214.0f, 128.0f});
+    okBtn->setPosition({winSize.width / 2.0f + 65.0f, winSize.height / 2.f - 30.0f});
+    cancelBtn->setPosition({winSize.width / 2.0f - 65.0f, winSize.height / 2.f - 30.0f});
 
     filter_input = TextInput::create(300, "Search by name or artist...");
-	filter_input->setPosition({285.0f, 174.0f});
+	filter_input->setPosition({winSize.width / 2, winSize.height / 2.f + 10.0f});
 	filter_input->setID("ADVANCED_SEARCH_BY_RELATIVE"_spr);
 
     mainMenu->addChild(filter_input);
@@ -111,12 +110,12 @@ bool AdvancedSearchFilterLayer::init() {
 
 
 CCScale9Sprite* AdvancedSearchFilterLayer::create_background_sprite() {
+	auto winSize = CCDirector::sharedDirector()->getWinSize();
+
     auto backSprite = CCScale9Sprite::create("GJ_square01.png");
 	this->m_mainLayer->addChild(backSprite);
-	backSprite->setContentSize(ccp(320, 140));
+	backSprite->setContentSize(ccp(320, winSize.height / 2.5f));
 	backSprite->setScale(0.0f);
-
-	auto winSize = CCDirector::sharedDirector()->getWinSize();
 
 	backSprite->setPosition({winSize.width / 2, winSize.height / 2});
 
